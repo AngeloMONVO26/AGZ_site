@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion des réalisations — AGZ Solutions</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="agz-sidebar"></aside>
+
+  <div>
+    <header class="topbar" id="agz-topbar"></header>
+
+    <main class="content">
+      <div class="page-head">
+        <div class="page-head-row">
+          <div>
+            <h1>Gestion des réalisations</h1>
+            <p>Présentez vos projets et succès.</p>
+          </div>
+          <a href="#" class="btn btn-primary" id="newRealBtn">Ajouter une réalisation</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="topbar-search" style="width:280px"><input type="text" placeholder="Rechercher une réalisation…"></div>
+          <span class="muted">8 réalisations</span>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>#</th><th>Image</th><th>Projet</th><th>Client</th><th>Secteur</th><th>Statut</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="realBody"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <span class="muted">Affichage 1–5 sur 8</span>
+          <div class="page-btns">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+  AGZ.initLayout('realisations', { searchPlaceholder:'Rechercher…' });
+
+  const REALS = [
+    { titre:'Solution de gestion commerciale', client:'Entreprise ABC', secteur:'Commerce', statut:'Publié', emoji:'🧾' },
+    { titre:'Site web institutionnel', client:'Marie de Cotonou', secteur:'Administration', statut:'Publié', emoji:'🌐' },
+    { titre:'Application mobile', client:'StartUp Bénin', secteur:'Services', statut:'Publié', emoji:'📱' },
+    { titre:'Automatisation des processus', client:'AgroTech', secteur:'Agriculture', statut:'Publié', emoji:'🤖' },
+    { titre:'Logiciel de suivi des stocks', client:'SOGEBA', secteur:'Industrie', statut:'Brouillon', emoji:'📦' },
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('newRealBtn').innerHTML = AGZ.icon('plus') + ' Ajouter une réalisation';
+    const body = document.getElementById('realBody');
+    body.innerHTML = REALS.map((r,i) => `
+      <tr>
+        <td>${i+1}</td>
+        <td><div class="row-thumb" style="display:flex;align-items:center;justify-content:center;font-size:18px">${r.emoji}</div></td>
+        <td class="cell-title">${r.titre}</td>
+        <td>${r.client}</td>
+        <td>${r.secteur}</td>
+        <td><span class="badge ${r.statut==='Publié' ? 'badge-green':'badge-amber'}">${r.statut}</span></td>
+        <td>
+          <div class="actions-cell">
+            <a class="icon-action" href="#" title="Modifier">${AGZ.icon('edit')}</a>
+            <a class="icon-action" href="#" title="Aperçu">${AGZ.icon('eye')}</a>
+            <a class="icon-action danger" href="#" title="Supprimer">${AGZ.icon('trash')}</a>
+          </div>
+        </td>
+      </tr>`).join('');
+  });
+</script>
+</body>
+</html>

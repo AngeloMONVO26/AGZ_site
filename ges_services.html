@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion des services — AGZ Solutions</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="agz-sidebar"></aside>
+
+  <div>
+    <header class="topbar" id="agz-topbar"></header>
+
+    <main class="content">
+      <div class="page-head">
+        <div class="page-head-row">
+          <div>
+            <h1>Gestion des services</h1>
+            <p>Gérez les services proposés sur votre site.</p>
+          </div>
+          <a href="service-form.html" class="btn btn-primary">Ajouter un service</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="topbar-search" style="width:280px">
+            <input type="text" placeholder="Rechercher un service…">
+          </div>
+          <span class="muted">4 services</span>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Icône</th><th>Service</th><th>Statut</th><th>Ordre</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><div class="row-thumb" style="display:flex;align-items:center;justify-content:center;color:var(--blue-600)">🖥️</div></td>
+                <td>
+                  <div class="cell-title">Prestations informatiques</div>
+                  <div class="cell-sub">Assistance, maintenance, support…</div>
+                </td>
+                <td><span class="badge badge-green">Publié</span></td>
+                <td>1</td>
+                <td>
+                  <div class="actions-cell">
+                    <a class="icon-action" href="service-form.html" title="Modifier"></a>
+                    <a class="icon-action" href="#" title="Aperçu"></a>
+                    <a class="icon-action danger" href="#" title="Supprimer"></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><div class="row-thumb" style="display:flex;align-items:center;justify-content:center">💻</div></td>
+                <td>
+                  <div class="cell-title">Conception &amp; développement</div>
+                  <div class="cell-sub">Applications web et mobiles</div>
+                </td>
+                <td><span class="badge badge-green">Publié</span></td>
+                <td>2</td>
+                <td>
+                  <div class="actions-cell">
+                    <a class="icon-action" href="service-form.html" title="Modifier"></a>
+                    <a class="icon-action" href="#" title="Aperçu"></a>
+                    <a class="icon-action danger" href="#" title="Supprimer"></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><div class="row-thumb" style="display:flex;align-items:center;justify-content:center">⚙️</div></td>
+                <td>
+                  <div class="cell-title">Logiciels de gestion</div>
+                  <div class="cell-sub">Solutions sur mesure pour votre activité</div>
+                </td>
+                <td><span class="badge badge-green">Publié</span></td>
+                <td>3</td>
+                <td>
+                  <div class="actions-cell">
+                    <a class="icon-action" href="service-form.html" title="Modifier"></a>
+                    <a class="icon-action" href="#" title="Aperçu"></a>
+                    <a class="icon-action danger" href="#" title="Supprimer"></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><div class="row-thumb" style="display:flex;align-items:center;justify-content:center">🤖</div></td>
+                <td>
+                  <div class="cell-title">Automatisation des processus</div>
+                  <div class="cell-sub">Gagnez en productivité et en efficacité</div>
+                </td>
+                <td><span class="badge badge-green">Publié</span></td>
+                <td>4</td>
+                <td>
+                  <div class="actions-cell">
+                    <a class="icon-action" href="service-form.html" title="Modifier"></a>
+                    <a class="icon-action" href="#" title="Aperçu"></a>
+                    <a class="icon-action danger" href="#" title="Supprimer"></a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <span class="muted">Affichage 1–4 sur 4</span>
+          <div class="page-btns">
+            <button class="page-btn active">1</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+  AGZ.initLayout('services', { searchPlaceholder:'Rechercher…' });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.icon-action[title="Modifier"]').forEach(b => b.innerHTML = AGZ.icon('edit'));
+    document.querySelectorAll('.icon-action[title="Aperçu"]').forEach(b => b.innerHTML = AGZ.icon('eye'));
+    document.querySelectorAll('.icon-action[title="Supprimer"]').forEach(b => b.innerHTML = AGZ.icon('trash'));
+    document.querySelector('a.btn-primary').innerHTML = AGZ.icon('plus') + ' Ajouter un service';
+  });
+</script>
+</body>
+</html>

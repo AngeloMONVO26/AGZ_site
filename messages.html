@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messages et demandes de contact — AGZ Solutions</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="agz-sidebar"></aside>
+
+  <div>
+    <header class="topbar" id="agz-topbar"></header>
+
+    <main class="content">
+      <div class="page-head">
+        <h1>Messages et demandes de contact</h1>
+        <p>Consultez et répondez aux messages envoyés par vos visiteurs.</p>
+      </div>
+
+      <div class="card" id="msgTabsScope">
+        <div class="tabs">
+          <div class="tab active" data-tab="tous">Tous <span class="count">8</span></div>
+          <div class="tab" data-tab="messages">Messages <span class="count">5</span></div>
+          <div class="tab" data-tab="devis">Demandes de devis <span class="count">3</span></div>
+        </div>
+
+        <div style="padding:14px 22px 0">
+          <div class="topbar-search" style="width:280px"><input type="text" placeholder="Rechercher un message…"></div>
+        </div>
+
+        <div data-panel="tous">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>Nom</th><th>Sujet</th><th>Date</th><th>Statut</th><th>Actions</th></tr></thead>
+              <tbody id="msgBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div data-panel="messages" style="display:none">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>Nom</th><th>Sujet</th><th>Date</th><th>Statut</th><th>Actions</th></tr></thead>
+              <tbody id="msgBodyMessages"></tbody>
+            </table>
+          </div>
+        </div>
+        <div data-panel="devis" style="display:none">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>Nom</th><th>Sujet</th><th>Date</th><th>Statut</th><th>Actions</th></tr></thead>
+              <tbody id="msgBodyDevis"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pagination">
+          <span class="muted">Affichage 1–8 sur 8</span>
+          <div class="page-btns"><button class="page-btn active">1</button></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+  AGZ.initLayout('messages', { searchPlaceholder:'Rechercher…' });
+  AGZ.initTabs('#msgTabsScope');
+
+  const ALL = [
+    { nom:'Jean Dupont', entreprise:'Entreprise ABC', sujet:'Demande de logiciel', date:'06/09/2026 14:32', statut:'Nouveau', type:'messages' },
+    { nom:'Marie Koffi', entreprise:'Koffi SARL', sujet:'Devis site web', date:'05/09/2026 11:20', statut:'En cours', type:'devis' },
+    { nom:'Alissou Dossou', entreprise:'Dossou Tech', sujet:'Support technique', date:'04/09/2026 09:45', statut:'Traité', type:'messages' },
+    { nom:'Fatou Aheanmou', entreprise:'Aheanmou &amp; Co', sujet:'Automatisation', date:'02/09/2026 08:12', statut:'Traité', type:'messages' },
+    { nom:'Herman Adjo', entreprise:'Adjo Group', sujet:'Devis logiciel de gestion', date:'01/09/2026 15:50', statut:'Traité', type:'devis' },
+    { nom:'Sandra Aina', entreprise:'Aina Digital', sujet:'Demande de partenariat', date:'30/08/2026 10:05', statut:'Nouveau', type:'messages' },
+    { nom:'Yves Tossou', entreprise:'Tossou Freight', sujet:'Devis application mobile', date:'29/08/2026 09:00', statut:'Traité', type:'devis' },
+    { nom:'Chantal Houngbo', entreprise:'Houngbo &amp; Fils', sujet:'Question sur les services', date:'27/08/2026 16:40', statut:'Traité', type:'messages' },
+  ];
+
+  const badgeClass = s => s==='Nouveau' ? 'badge-green' : (s==='En cours' ? 'badge-amber' : 'badge-gray');
+  const rowsHTML = list => list.map((m,i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td><div class="cell-title">${m.nom}</div><div class="cell-sub">${m.entreprise}</div></td>
+      <td>${m.sujet}</td>
+      <td>${m.date}</td>
+      <td><span class="badge ${badgeClass(m.statut)}">${m.statut}</span></td>
+      <td>
+        <div class="actions-cell">
+          <a class="icon-action" href="#" title="Voir">${AGZ.icon('eye')}</a>
+          <a class="icon-action danger" href="#" title="Supprimer">${AGZ.icon('trash')}</a>
+        </div>
+      </td>
+    </tr>`).join('');
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('msgBody').innerHTML = rowsHTML(ALL);
+    document.getElementById('msgBodyMessages').innerHTML = rowsHTML(ALL.filter(m => m.type==='messages'));
+    document.getElementById('msgBodyDevis').innerHTML = rowsHTML(ALL.filter(m => m.type==='devis'));
+  });
+</script>
+</body>
+</html>

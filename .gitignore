@@ -1,0 +1,20 @@
+# Fichiers de test
+test_*.php
+
+# Fichiers temporaires
+text.txt
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Configuration locale sensible
+.env
+.env.*
+!.env.example
+
+# Script local de création d'administrateur
+/create_admin.php
+
+# Fichiers de sauvegarde
+*.bak

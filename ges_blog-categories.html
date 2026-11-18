@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catégories du blog — AGZ Solutions</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="agz-sidebar"></aside>
+
+  <div>
+    <header class="topbar" id="agz-topbar"></header>
+
+    <main class="content">
+      <div class="page-head">
+        <div class="page-head-row">
+          <div>
+            <h1>Réglages du blog — Catégories</h1>
+            <p>Gérez les catégories utilisées pour classer vos articles.</p>
+          </div>
+          <a href="#" class="btn btn-primary" id="newCatBtn">Ajouter une catégorie</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="topbar-search" style="width:280px"><input type="text" placeholder="Rechercher une catégorie…"></div>
+          <span class="muted">5 catégories</span>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Nom</th><th>Slug</th><th>Articles</th><th>Statut</th><th>Actions</th></tr></thead>
+            <tbody id="catBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+  AGZ.initLayout('categories', { searchPlaceholder:'Rechercher…' });
+
+  const CATS = [
+    { nom:'Technologie', slug:'technologie', n:5, statut:'Actif' },
+    { nom:'Automatisation', slug:'automatisation', n:3, statut:'Actif' },
+    { nom:'Logiciels', slug:'logiciels', n:2, statut:'Actif' },
+    { nom:'Sécurité', slug:'securite', n:1, statut:'Actif' },
+    { nom:'Cloud', slug:'cloud', n:1, statut:'Inactif' },
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('newCatBtn').innerHTML = AGZ.icon('plus') + ' Ajouter une catégorie';
+    document.getElementById('catBody').innerHTML = CATS.map(c => `
+      <tr>
+        <td class="cell-title">${c.nom}</td>
+        <td>${c.slug}</td>
+        <td>${c.n}</td>
+        <td><span class="badge ${c.statut==='Actif' ? 'badge-green':'badge-gray'}">${c.statut}</span></td>
+        <td>
+          <div class="actions-cell">
+            <a class="icon-action" href="#" title="Modifier">${AGZ.icon('edit')}</a>
+            <a class="icon-action danger" href="#" title="Supprimer">${AGZ.icon('trash')}</a>
+          </div>
+        </td>
+      </tr>`).join('');
+  });
+</script>
+</body>
+</html>

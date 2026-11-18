@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajouter un service — AGZ Solutions</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="agz-sidebar"></aside>
+
+  <div>
+    <header class="topbar" id="agz-topbar"></header>
+
+    <main class="content">
+      <div class="page-head">
+        <div class="eyebrow-row"><a href="services.html" class="text-muted">Services</a><span>›</span><span>Ajouter un service</span></div>
+        <h1>Ajouter / Modifier un service</h1>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card card-pad">
+          <div class="field">
+            <label for="nom">Nom du service *</label>
+            <input type="text" id="nom" value="Logiciels de gestion">
+          </div>
+          <div class="field">
+            <label for="slug">Slug (URL) *</label>
+            <input type="text" id="slug" value="logiciels-gestion">
+          </div>
+          <div class="field">
+            <label for="courte">Description courte *</label>
+            <input type="text" id="courte" value="Des logiciels sur mesure pour piloter efficacement votre activité">
+          </div>
+          <div class="field">
+            <label for="detaillee">Description détaillée</label>
+            <div class="toolbar-fake">
+              <button type="button"><b>B</b></button>
+              <button type="button"><i>I</i></button>
+              <button type="button"><u>U</u></button>
+              <button type="button">H1</button>
+              <button type="button">•</button>
+              <button type="button">1.</button>
+              <button type="button">🔗</button>
+            </div>
+            <div class="rte-body" contenteditable="true">
+              Nous concevons et développons des logiciels de gestion adaptés à votre métier :
+              <ul style="margin:10px 0 0 18px">
+                <li>Gestion commerciale</li>
+                <li>Gestion de stock</li>
+                <li>Suivi des fournisseurs et clients</li>
+                <li>Tableau de bord et reporting</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Avantages (liste)</label>
+            <input type="text" placeholder="Ajouter un avantage puis appuyer sur Entrée">
+            <div class="tag-list">
+              <span class="tag-pill">Gain de temps <button>×</button></span>
+              <span class="tag-pill">Meilleure organisation <button>×</button></span>
+              <span class="tag-pill">Suivi en temps réel <button>×</button></span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card card-pad" style="margin-bottom:18px">
+            <label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:8px">Icône du service</label>
+            <div class="flex items-center gap-8" style="margin-bottom:14px">
+              <div style="width:56px;height:56px;border-radius:12px;background:var(--blue-100);color:var(--blue-600);display:flex;align-items:center;justify-content:center;font-size:24px">⚙️</div>
+              <button type="button" class="btn btn-outline">Choisir une icône</button>
+            </div>
+
+            <label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:8px">Image principale</label>
+            <div class="upload-box" style="margin-bottom:12px;aspect-ratio:16/10;justify-content:center">
+              <div style="width:100%;height:110px;border-radius:8px;background:linear-gradient(135deg,#12233f,#2e6ff2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px">🖥️</div>
+            </div>
+            <button type="button" class="btn btn-outline btn-block">Choisir une image</button>
+          </div>
+
+          <div class="card card-pad">
+            <div class="field">
+              <label for="ordre">Ordre d'affichage</label>
+              <input type="text" id="ordre" value="3" style="max-width:90px">
+            </div>
+            <div class="switch-row" style="margin-bottom:18px">
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="track"></span>
+              </label>
+              <span>Publié</span>
+            </div>
+            <div class="flex gap-8">
+              <a href="services.html" class="btn btn-outline" style="flex:1;justify-content:center">Annuler</a>
+              <a href="services.html" class="btn btn-primary" style="flex:1;justify-content:center">Enregistrer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>AGZ.initLayout('services', { searchPlaceholder:'Rechercher…' });</script>
+</body>
+</html>

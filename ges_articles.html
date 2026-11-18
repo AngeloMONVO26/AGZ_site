@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion des articles — AGZ Solutions</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="agz-sidebar"></aside>
+
+  <div>
+    <header class="topbar" id="agz-topbar"></header>
+
+    <main class="content">
+      <div class="page-head">
+        <div class="page-head-row">
+          <div>
+            <h1>Gestion des articles</h1>
+            <p>Créez et gérez vos articles de blog.</p>
+          </div>
+          <a href="#" class="btn btn-primary" id="newArticleBtn">Nouvel article</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="topbar-search" style="width:280px"><input type="text" placeholder="Rechercher un article…"></div>
+          <span class="muted">12 articles</span>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>#</th><th>Image</th><th>Titre</th><th>Catégorie</th><th>Statut</th><th>Date</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="articlesBody"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <span class="muted">Affichage 1–5 sur 12</span>
+          <div class="page-btns">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+  AGZ.initLayout('articles', { searchPlaceholder:'Rechercher…' });
+
+  const ARTICLES = [
+    { titre:'Pourquoi automatiser ses processus ?', cat:'Automatisation', statut:'Publié', date:'06/09/2026', emoji:'⚙️' },
+    { titre:'Les avantages du cloud pour les PME', cat:'Cloud', statut:'Publié', date:'02/09/2026', emoji:'☁️' },
+    { titre:'Comment choisir son logiciel de gestion ?', cat:'Logiciels', statut:'Publié', date:'28/08/2026', emoji:'🗂️' },
+    { titre:'Sécurité informatique : les bonnes pratiques', cat:'Sécurité', statut:'Publié', date:'20/08/2026', emoji:'🔒' },
+    { titre:'Tendances IT en 2026', cat:'Technologie', statut:'Brouillon', date:'15/08/2026', emoji:'📈' },
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('newArticleBtn').innerHTML = AGZ.icon('plus') + ' Nouvel article';
+    const body = document.getElementById('articlesBody');
+    body.innerHTML = ARTICLES.map((a,i) => `
+      <tr>
+        <td>${i+1}</td>
+        <td><div class="row-thumb" style="display:flex;align-items:center;justify-content:center;font-size:18px">${a.emoji}</div></td>
+        <td class="cell-title">${a.titre}</td>
+        <td>${a.cat}</td>
+        <td><span class="badge ${a.statut==='Publié' ? 'badge-green':'badge-amber'}">${a.statut}</span></td>
+        <td>${a.date}</td>
+        <td>
+          <div class="actions-cell">
+            <a class="icon-action" href="#" title="Modifier">${AGZ.icon('edit')}</a>
+            <a class="icon-action" href="#" title="Aperçu">${AGZ.icon('eye')}</a>
+            <a class="icon-action danger" href="#" title="Supprimer">${AGZ.icon('trash')}</a>
+          </div>
+        </td>
+      </tr>`).join('');
+  });
+</script>
+</body>
+</html>

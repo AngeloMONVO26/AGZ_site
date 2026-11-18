@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paramètres — AGZ Solutions</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="agz-sidebar"></aside>
+
+  <div>
+    <header class="topbar" id="agz-topbar"></header>
+
+    <main class="content">
+      <div class="page-head">
+        <h1>Paramètres</h1>
+        <p>Gérez les informations, les utilisateurs et le référencement de votre site.</p>
+      </div>
+
+      <div class="card" id="setTabsScope">
+        <div class="tabs">
+          <div class="tab active" data-tab="infos">Informations de l'entreprise</div>
+          <div class="tab" data-tab="users">Utilisateurs</div>
+          <div class="tab" data-tab="seo">Référencement naturel</div>
+        </div>
+
+        <!-- ================= Informations de l'entreprise ================= -->
+        <div data-panel="infos" class="card-pad">
+          <div class="grid grid-2">
+            <div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="entName">Nom de l'entreprise *</label>
+                  <input type="text" id="entName" value="AGZ Solutions">
+                </div>
+              </div>
+              <div class="field">
+                <label for="slogan">Slogan</label>
+                <input type="text" id="slogan" value="Votre problème, notre expertise, une solution.">
+              </div>
+              <div class="field">
+                <label for="activite">Activité</label>
+                <input type="text" id="activite" value="Prestation & conception de solutions informatiques">
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="tel">Téléphone</label>
+                  <input type="tel" id="tel" value="+229 01 97 12 45 00">
+                </div>
+                <div class="field">
+                  <label for="mail">E-mail</label>
+                  <input type="email" id="mail" value="agzsolutions.agz@gmail.com">
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="loc">Localisation</label>
+                  <input type="text" id="loc" value="Cotonou, Bénin">
+                </div>
+                <div class="field">
+                  <label for="site">Site web</label>
+                  <input type="url" id="site" value="www.agzsolutions.com">
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Réseaux sociaux</label>
+                <div class="field-row">
+                  <input type="url" placeholder="Facebook" value="https://facebook.com/agzsolutions">
+                  <input type="url" placeholder="LinkedIn" value="https://linkedin.com/company/agzsolutions">
+                </div>
+                <div class="field-row" style="margin-top:10px">
+                  <input type="url" placeholder="YouTube" value="https://youtube.com/@agzsolutions">
+                </div>
+              </div>
+
+              <button class="btn btn-primary" style="margin-top:6px">Enregistrer les modifications</button>
+            </div>
+
+            <div class="card card-pad" style="align-self:start">
+              <label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:10px">Logo de l'entreprise</label>
+              <div style="width:100%;aspect-ratio:1.6;border-radius:12px;background:linear-gradient(150deg,var(--navy-900),var(--navy-700));display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-display);font-weight:800;font-size:22px;margin-bottom:14px">
+                AGZ
+              </div>
+              <button class="btn btn-outline btn-block">Changer le logo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= Utilisateurs ================= -->
+        <div data-panel="users" style="display:none">
+          <div class="card-header">
+            <span class="muted">Gérez les comptes ayant accès à l'administration.</span>
+            <a href="#" class="btn btn-primary" id="newUserBtn">Ajouter un utilisateur</a>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Nom</th><th>Rôle</th><th>Statut</th><th>Dernière connexion</th><th>Actions</th></tr></thead>
+              <tbody id="usersBody"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <span class="muted">Affichage 1–4 sur 4</span>
+            <div class="page-btns"><button class="page-btn active">1</button></div>
+          </div>
+        </div>
+
+        <!-- ================= SEO ================= -->
+        <div data-panel="seo" style="display:none" class="card-pad">
+          <div class="grid grid-2">
+            <div>
+              <p class="text-muted" style="margin:0 0 16px;font-size:13.5px">Informations de la page d'accueil du site.</p>
+              <div class="field">
+                <label for="seoTitle">Titre SEO</label>
+                <input type="text" id="seoTitle" value="AGZ Solutions | Solutions informatiques et automatisation au Bénin">
+              </div>
+              <div class="field">
+                <label for="seoDesc">Meta description</label>
+                <textarea id="seoDesc">AGZ Solutions accompagne les entreprises dans la conception de solutions informatiques, logiciels de gestion et automatisation des processus au Bénin.</textarea>
+              </div>
+              <div class="field">
+                <label for="seoKeys">Mots-clés</label>
+                <div class="tag-list" style="margin-top:0">
+                  <span class="tag-pill">informatique <button>×</button></span>
+                  <span class="tag-pill">automatisation <button>×</button></span>
+                  <span class="tag-pill">logiciel <button>×</button></span>
+                  <span class="tag-pill">Bénin <button>×</button></span>
+                </div>
+              </div>
+              <button class="btn btn-primary" style="margin-top:6px">Enregistrer les modifications</button>
+            </div>
+
+            <div class="card card-pad" style="align-self:start">
+              <label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:10px">Image de partage (réseaux sociaux)</label>
+              <div style="width:100%;aspect-ratio:1.9;border-radius:12px;background:linear-gradient(150deg,var(--navy-900),var(--blue-600));display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-display);font-weight:700;font-size:14px;text-align:center;padding:16px">
+                Des solutions informatiques pour un avenir plus performant
+              </div>
+              <button class="btn btn-outline btn-block" style="margin-top:14px">Changer l'image</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+  AGZ.initLayout('settings', { searchPlaceholder:'Rechercher…' });
+  AGZ.initTabs('#setTabsScope');
+
+  const USERS = [
+    { nom:'Administrateur', role:'Super admin', statut:'Actif', date:'06/09/2026 09:12' },
+    { nom:'Marie Koffi', role:'Éditeur', statut:'Actif', date:'05/09/2026 14:45' },
+    { nom:'Jean Quezou', role:'Éditeur', statut:'Actif', date:'04/09/2026 12:30' },
+    { nom:'Aïcha Bello', role:'Modérateur', statut:'Inactif', date:'01/09/2026 18:20' },
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('newUserBtn').innerHTML = AGZ.icon('plus') + ' Ajouter un utilisateur';
+    document.getElementById('usersBody').innerHTML = USERS.map(u => `
+      <tr>
+        <td class="cell-title">${u.nom}</td>
+        <td>${u.role}</td>
+        <td><span class="badge ${u.statut==='Actif' ? 'badge-green':'badge-gray'}">${u.statut}</span></td>
+        <td>${u.date}</td>
+        <td>
+          <div class="actions-cell">
+            <a class="icon-action" href="#" title="Modifier">${AGZ.icon('edit')}</a>
+            <a class="icon-action danger" href="#" title="Supprimer">${AGZ.icon('trash')}</a>
+          </div>
+        </td>
+      </tr>`).join('');
+  });
+</script>
+</body>
+</html>

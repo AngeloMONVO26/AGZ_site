@@ -1,0 +1,375 @@
+
+/* ========================================
+   AGZ SOLUTIONS — DASHBOARD
+   Identité visuelle : bleu marine et bleu
+======================================== */
+
+:root {
+    --agz-navy: #071d49;
+    --agz-navy-light: #102e61;
+    --agz-blue: #075cff;
+    --agz-blue-hover: #0048d9;
+    --agz-bg: #f3f7fc;
+    --agz-white: #ffffff;
+    --agz-text: #14264b;
+    --agz-muted: #71809a;
+    --agz-border: #e4ebf5;
+    --agz-green: #10b981;
+    --agz-radius: 10px;
+    --agz-shadow: 0 3px 12px rgba(16, 42, 88, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--agz-bg);
+    color: var(--agz-text);
+    font-size: 14px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Structure générale */
+
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Menu latéral */
+
+.sidebar {
+    width: 230px;
+    flex-shrink: 0;
+    background: var(--agz-navy);
+    color: var(--agz-white);
+    padding: 20px 12px;
+}
+
+.sidebar-logo {
+    padding: 4px 10px 24px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sidebar-logo strong {
+    font-size: 23px;
+    font-style: italic;
+    letter-spacing: -1px;
+}
+
+.sidebar-logo span {
+    display: block;
+    margin-top: 4px;
+    color: #b8d5ff;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+}
+
+.sidebar-section {
+    margin: 20px 10px 8px;
+    color: #8ca6d0;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 12px;
+    border-radius: 7px;
+    color: #dce7fa;
+    font-size: 12px;
+    transition: background 0.2s ease;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background: var(--agz-blue);
+    color: var(--agz-white);
+}
+
+/* Zone principale */
+
+.main-area {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Barre supérieure */
+
+.topbar {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 26px;
+    background: var(--agz-white);
+    border-bottom: 1px solid var(--agz-border);
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.topbar-search {
+    width: min(320px, 35vw);
+    padding: 10px 13px;
+    border: 1px solid var(--agz-border);
+    border-radius: 7px;
+    background: #f6f9fd;
+    outline: none;
+}
+
+.topbar-search:focus {
+    border-color: var(--agz-blue);
+}
+
+.admin-profile {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Contenu */
+
+.page-content {
+    padding: 28px;
+}
+
+.page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.page-heading h1 {
+    margin: 0 0 8px;
+    color: var(--agz-navy);
+    font-size: 26px;
+}
+
+.page-heading p {
+    margin: 0;
+    color: var(--agz-muted);
+}
+
+/* Cartes statistiques */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    padding: 20px;
+    background: var(--agz-white);
+    border: 1px solid var(--agz-border);
+    border-radius: var(--agz-radius);
+    box-shadow: var(--agz-shadow);
+}
+
+.stat-card h2 {
+    margin: 0 0 14px;
+    color: var(--agz-muted);
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.stat-card p {
+    margin: 0;
+    color: var(--agz-navy);
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Panneaux et tableaux */
+
+.panel {
+    margin-bottom: 24px;
+    padding: 22px;
+    background: var(--agz-white);
+    border: 1px solid var(--agz-border);
+    border-radius: var(--agz-radius);
+    box-shadow: var(--agz-shadow);
+    overflow-x: auto;
+}
+
+.panel h2 {
+    margin: 0 0 20px;
+    color: var(--agz-navy);
+    font-size: 17px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+.data-table th,
+.data-table td {
+    padding: 13px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--agz-border);
+}
+
+.data-table th {
+    background: #f6f9fe;
+    color: var(--agz-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.data-table td {
+    font-size: 12px;
+}
+
+.data-table tbody tr:hover {
+    background: #f8fbff;
+}
+
+/* Boutons */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--agz-blue);
+    color: var(--agz-white);
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: var(--agz-blue-hover);
+}
+
+.btn-secondary {
+    background: #edf3ff;
+    color: var(--agz-navy);
+}
+
+.btn-secondary:hover {
+    background: #dce8ff;
+}
+
+/* Adaptation aux écrans */
+
+@media (max-width: 1100px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .page-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .sidebar {
+        width: 68px;
+        padding: 16px 6px;
+    }
+
+    .sidebar-logo {
+        padding: 8px 0 18px;
+        text-align: center;
+    }
+
+    .sidebar-logo strong {
+        font-size: 14px;
+    }
+
+    .sidebar-logo span,
+    .sidebar-section,
+    .sidebar-nav a span {
+        display: none;
+    }
+
+    .sidebar-nav a {
+        justify-content: center;
+        padding: 12px 4px;
+        font-size: 11px;
+    }
+
+    .topbar {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .topbar-search {
+        width: 145px;
+    }
+
+    .admin-profile {
+        display: none;
+    }
+
+    .page-content {
+        padding: 14px;
+    }
+
+    .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .page-heading h1 {
+        font-size: 22px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stat-card p {
+        font-size: 26px;
+    }
+
+    .panel {
+        padding: 14px;
+    }
+}
